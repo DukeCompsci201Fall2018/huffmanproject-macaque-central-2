@@ -110,18 +110,17 @@ public class HuffProcessor {
 			if (counts[index] > 0) {
 				pq.add(new HuffNode(index,counts[index],null,null));
 			}
-			
-			while (pq.size() > 1) {
-				HuffNode left = pq.remove();
-				HuffNode right = pq.remove();
-				HuffNode t = new HuffNode(0, left.myWeight + right.myWeight, left, right);
-				pq.add(t);
-			}
-			
 		}
-		return null;
+		while (pq.size() > 1) {
+			HuffNode left = pq.remove();
+			HuffNode right = pq.remove();
+			HuffNode t = new HuffNode(0, left.myWeight + right.myWeight, left, right);
+			pq.add(t);
+		}
+		HuffNode root = pq.remove();
+		return root;
 	}
-
+	
 	private int[] readForCounts(BitInputStream in) {
 		int[] freq = new int[ALPH_SIZE+1];
 		freq[PSEUDO_EOF] = 1;
