@@ -100,7 +100,7 @@ public class HuffProcessor {
 			encodings[root.myValue] = string;
 		}
 		codingHelper(root.myLeft, string + "0", encodings);
-		codingHelper(root.myLeft, string + "0", encodings);
+		codingHelper(root.myRight, string + "1", encodings);
 	}
 
 	private HuffNode makeTreeFromCounts(int[] counts) {
